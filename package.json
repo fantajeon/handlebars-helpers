@@ -69,7 +69,7 @@
     "node": ">=10.12.0"
   },
   "scripts": {
-    "lint": "./node_modules/.bin/eslint *.js lib/**/*.js test/**/*.js",
+    "lint": "./node_modules/.bin/eslint --ext js .",
     "test": "./node_modules/.bin/rimraf .nyc_output && ./node_modules/.bin/nyc ./node_modules/.bin/mocha",
     "update:readmemd": "verb",
     "clean": "./node_modules/.bin/rimraf .nyc_output"
