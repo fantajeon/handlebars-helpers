@@ -398,7 +398,7 @@ describe('string', function() {
     });
   });
 
-  describe.only('lorem', function() {
+  describe('lorem', function() {
     // Bad parameters
     it('Should return "Lorem ipsum" only, if passed no parameters', function() {
       var fn = hbs.compile('{{ lorem }}');
