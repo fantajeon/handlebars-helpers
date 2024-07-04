@@ -4,7 +4,7 @@ require('mocha');
 var assert = require('assert');
 var hbs = require('handlebars').create();
 var helpers = require('..');
-helpers.string({handlebars: hbs});
+helpers.string({ handlebars: hbs });
 
 describe('string', function() {
   describe('camelcase', function() {
@@ -395,6 +395,51 @@ describe('string', function() {
     it('should work as a block helper', function() {
       var fn = hbs.compile('{{#uppercase}}bender should not be allowed on tv{{/uppercase}}');
       assert.equal(fn(), 'BENDER SHOULD NOT BE ALLOWED ON TV');
+    });
+  });
+
+  describe('lorem', function() {
+    // Bad parameters
+    it('Should return "Lorem ipsum" only, if passed no parameters', function() {
+      var fn = hbs.compile('{{ lorem }}');
+      assert.equal(fn(), 'Lorem ipsum');
+    });
+    it('Should return "Lorem ipsum" only, if passed a non-number (string)', function() {
+      var fn = hbs.compile('{{ lorem a }}');
+      assert.equal(fn(), 'Lorem ipsum');
+    });
+    it('Should return "Lorem ipsum" only, if passed a non-number (array)', function() {
+      var fn = hbs.compile('{{ lorem [1,2,3] }}');
+      assert.equal(fn(), 'Lorem ipsum');
+    });
+    it('Should return "Lorem ipsum" only, if passed a number less than 1', function() {
+      var fn = hbs.compile('{{ lorem -1 }}');
+      assert.equal(fn(), 'Lorem ipsum');
+    });
+    it('Should return "Lorem ipsum" only, if passed a number less than 1', function() {
+      var fn = hbs.compile('{{ lorem 0 }}');
+      assert.equal(fn(), 'Lorem ipsum');
+    });
+    it('Should return "Lorem ipsum" only, if passed a number less than 1', function() {
+      var fn = hbs.compile('{{ lorem -999 }}');
+      assert.equal(fn(), 'Lorem ipsum');
+    });
+    // Good parameters
+    it('Should return a string of "Lorem ipsum" if passed 11', function() {
+      var fn = hbs.compile('{{ lorem 11 }}');
+      assert.equal(fn(), 'Lorem ipsum');
+    });
+    it('Should return a string of "Lorem" if passed 5', function() {
+      var fn = hbs.compile('{{ lorem 5 }}');
+      assert.equal(fn(), 'Lorem');
+    });
+    it('Should return a string of "Lorem ipsum dolor sit amet, consectetur adipiscing" if passed 50', function() {
+      var fn = hbs.compile('{{ lorem 50 }}');
+      assert.equal(fn(), 'Lorem ipsum dolor sit amet, consectetur adipiscing');
+    });
+    it('Should return a string of length 8032 if passed 8032', function() {
+      var fn = hbs.compile('{{ lorem 8032 }}');
+      assert.equal(fn().length, 8032);
     });
   });
 });
