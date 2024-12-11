@@ -1,23 +1,23 @@
 {
-  "name": "Single-Card",
+  "name": "Handlebars & JSON Template Viewer",
   "organization": "HyeokjuneJeon",
-  "description": "My first visualization package.",
+  "description": "A component that visualizes JSON data and executes Handlebars templates with JavaScript support",
   "logoUrl": "https://www.linkedin.com/in/coworker-ai/",
-  "organizationUrl": "https://www.linkedin.com/in/coworker-ai/",
+  "organizationUrl": "https://www.linkedin.com/in/coworker-ai/", 
   "supportUrl": "https://www.linkedin.com/in/coworker-ai/",
-  "privacyPolicyUrl": "https://supercool.ai",
-  "termsOfServiceUrl": "https://supercool.ai",
+  "privacyPolicyUrl": "https://www.linkedin.com/in/coworker-ai/",
+  "termsOfServiceUrl": "https://www.linkedin.com/in/coworker-ai/",
   "packageUrl": "https://www.linkedin.com/in/coworker-ai/",
-  "devMode": "DEVMODE_BOOL",
+  "devMode": true,
   "components": [
     {
-      "name": "Single-Card",
-      "description": "My first Community Visualization",
-      "iconUrl": "https://url",
+      "name": "Handlebars & JSON Template Viewer",
+      "description": "A dynamic component that visualizes data using Handlebars template syntax and executes JavaScript code. Features various UI elements like tree viewers and buttons powered by Material-UI.",
+      "iconUrl": "https://raw.githubusercontent.com/HyeokjuneJeon/lookerstudio-community-viz/main/icon.png",
       "resource": {
-        "js": "YOUR_GCS_BUCKET/index.js",
-        "config": "YOUR_GCS_BUCKET/index.json",
-        "css": "YOUR_GCS_BUCKET/index.css"
+        "js": "gs://lookerstudio-community-viz/index.js",
+        "config": "gs://lookerstudio-community-viz/index.json",
+        "css": "gs://lookerstudio-community-viz/index.css"
       }
     }
   ]
