@@ -1,6 +1,6 @@
 {
   "dsccViz": {
-    "gcsDevBucket": "gs://lookerstudio-community-viz",
+    "gcsDevBucket": "gs://lookerstudio-community-viz/v0.1.0",
     "gcsProdBucket": "gs://lookerstudio-community-viz-prod",
     "components": [
       {
