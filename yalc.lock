@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "packages": {
+    "@google/dscc-scripts": {
+      "signature": "c54c78bd400ed5aef2eae888b2466aa5",
+      "file": true,
+      "replaced": "file:///Users/hjj/git/ds_custom_chart/community-viz/tooling/packages/dscc-scripts"
+    },
+    "@google/dscc-gen": {
+      "version": "2.0.30",
+      "signature": "b3a557a482803ef2fc3e37d3d07a86f3",
+      "file": true
+    }
+  }
+}

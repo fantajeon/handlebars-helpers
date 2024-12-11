@@ -1,0 +1,43 @@
+{
+  "dsccViz": {
+    "gcsDevBucket": "gs://lookerstudio-community-viz",
+    "gcsProdBucket": "gs://lookerstudio-community-viz-prod",
+    "components": [
+      {
+        "jsFile": "index.js",
+        "jsonFile": "index.json",
+        "cssFile": "index.css"
+      }
+    ]
+  },
+  "scripts": {
+    "build:dev": "dscc-scripts viz build -d dev",
+    "build:prod": "dscc-scripts viz build -d prod",
+    "push:dev": "dscc-scripts viz push -d dev",
+    "push:prod": "dscc-scripts viz push -d prod",
+    "update_message": "dscc-scripts viz update_message -f object",
+    "start": "dscc-scripts viz start"
+  },
+  "devDependencies": {
+    "@google/dscc-gen": "^2.0.31",
+    "@google/dscc-scripts": "file:.yalc/@google/dscc-scripts",
+    "@webpack-cli/serve": "^2.0.5",
+    "copy-webpack-plugin": "^4.6.0",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^5.1.0"
+  },
+  "name": "community-viz",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^6.2.0",
+    "handlebars": "^4.7.8",
+    "mini-css-extract-plugin": "^2.9.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}
