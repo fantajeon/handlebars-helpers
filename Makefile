@@ -4,7 +4,7 @@ clean:
 install:
 	yarn install
 
-build:
+build-dev:
 	yarn build:dev
 
 run:

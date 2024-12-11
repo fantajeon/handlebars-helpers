@@ -29,40 +29,49 @@ const JsonTreeView = ({ data }) => {
 
   const renderValue = (value, key) => {
     if (typeof value === 'object' && value !== null) {
-      return (
-        <ListItem key={key}>
-          <IconButton size="small" onClick={() => toggleOpen(key)}>
-            {open[key] ? <ExpandLess /> : <ExpandMore />}
-          </IconButton>
-          <ListItemText 
-            primary={key} 
-            secondary={`${Object.keys(value).length} items`}
-          />
-          <Collapse in={open[key]} timeout="auto" unmountOnExit>
-            <List sx={{ pl: 4 }}>
-              {Object.entries(value).map(([k, v]) => renderValue(v, `${key}-${k}`))}
-            </List>
-          </Collapse>
-        </ListItem>
+      return React.createElement(ListItem, { key: key },
+        React.createElement(IconButton, {
+          size: 'small',
+          onClick: () => toggleOpen(key)
+        }, open[key] 
+          ? React.createElement(ExpandLess)
+          : React.createElement(ExpandMore)
+        ),
+        React.createElement(ListItemText, {
+          primary: key,
+          secondary: `${Object.keys(value).length} items`
+        }),
+        React.createElement(Collapse, {
+          in: open[key],
+          timeout: 'auto',
+          unmountOnExit: true
+        },
+          React.createElement(List, {
+            sx: { paddingLeft: 4 }
+          }, Object.entries(value).map(([k, v]) => 
+            renderValue(v, `${key}-${k}`)
+          ))
+        )
       );
     }
     
-    return (
-      <ListItem key={key}>
-        <ListItemText 
-          primary={key.split('-').pop()}
-          secondary={value.toString()}
-        />
-      </ListItem>
+    return React.createElement(ListItem, { key: key },
+      React.createElement(ListItemText, {
+        primary: key.split('-').pop(),
+        secondary: value.toString()
+      })
     );
   };
 
-  return (
-    <Paper elevation={3} sx={{ p: 2, m: 2 }}>
-      <List>
-        {Object.entries(data).map(([key, value]) => renderValue(value, key))}
-      </List>
-    </Paper>
+  return React.createElement(Paper, {
+    elevation: 3,
+    sx: { padding: 2, margin: 2 }
+  },
+    React.createElement(List, null,
+      Object.entries(data).map(([key, value]) => 
+        renderValue(value, key)
+      )
+    )
   );
 };
 
