@@ -24,13 +24,13 @@
           "id": "bodyTemplate",
           "label": "Body Template",
           "defaultValue": "<div id='container'>Handlebars <b>{{width}} x {{height}}</b></div>",
-          "type": "TEXTINPUT"
+          "type": "TEXTAREA"
         },
         {
           "id": "scriptTemplate",
           "label": "Script Template",
-          "defaultValue": "Arial",
-          "type": "TEXTINPUT"
+          "defaultValue": "console.log('Hello, World!');",
+          "type": "TEXTAREA"
         }
       ]
     }
