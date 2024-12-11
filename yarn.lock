@@ -1102,6 +1102,12 @@
     ajv "^6.10.2"
     typescript "^3.7.2"
 
+"@google/dscc-validation@file:.yalc/@google/dscc-validation":
+  version "1.0.4"
+  dependencies:
+    ajv "^6.10.2"
+    typescript "^3.7.2"
+
 "@google/dscc@^0.3.17":
   version "0.3.22"
   resolved "https://registry.npmjs.org/@google/dscc/-/dscc-0.3.22.tgz"

@@ -29,6 +29,7 @@
     "@babel/preset-react": "^7.26.3",
     "@google/dscc-gen": "^2.0.31",
     "@google/dscc-scripts": "file:.yalc/@google/dscc-scripts",
+    "@google/dscc-validation": "file:.yalc/@google/dscc-validation",
     "@webpack-cli/serve": "^2.0.5",
     "babel-loader": "^9.2.1",
     "copy-webpack-plugin": "^4.6.0",

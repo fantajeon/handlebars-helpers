@@ -1,17 +1,17 @@
 {
-  "name": "My Visualizations",
-  "organization": "MyOrg",
+  "name": "Single-Card",
+  "organization": "HyeokjuneJeon",
   "description": "My first visualization package.",
-  "logoUrl": "https://logo",
-  "organizationUrl": "https://url",
-  "supportUrl": "https://url",
-  "privacyPolicyUrl": "https://url",
-  "termsOfServiceUrl": "https://url",
-  "packageUrl": "https://url",
+  "logoUrl": "https://www.linkedin.com/in/coworker-ai/",
+  "organizationUrl": "https://www.linkedin.com/in/coworker-ai/",
+  "supportUrl": "https://www.linkedin.com/in/coworker-ai/",
+  "privacyPolicyUrl": "https://supercool.ai",
+  "termsOfServiceUrl": "https://supercool.ai",
+  "packageUrl": "https://www.linkedin.com/in/coworker-ai/",
   "devMode": "DEVMODE_BOOL",
   "components": [
     {
-      "name": "myViz",
+      "name": "Single-Card",
       "description": "My first Community Visualization",
       "iconUrl": "https://url",
       "resource": {

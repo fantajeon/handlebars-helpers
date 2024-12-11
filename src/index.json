@@ -40,8 +40,5 @@
       "id": "interactionsConfigId",
       "supportedActions": ["FILTER"]
     }
-  ],
-  "features": {
-    "enableComparisonDateRange": false
-  }
+  ]
 }

@@ -10,6 +10,11 @@
       "version": "2.0.30",
       "signature": "b3a557a482803ef2fc3e37d3d07a86f3",
       "file": true
+    },
+    "@google/dscc-validation": {
+      "version": "1.0.4",
+      "signature": "80feb51415df1a00c9a951bd7e32b6c4",
+      "file": true
     }
   }
 }

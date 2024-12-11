@@ -178,6 +178,15 @@ const drawViz = (data) => {
       cardId: i,
     };
 
+    // fields에서 정의된 필드 이름으로 데이터 매핑
+    // 모든 필드 그룹을 순회
+    Object.keys(data.fields).forEach(fieldGroup => {
+      var fields = data.fields[fieldGroup];
+      fields.forEach((field, index) => {
+        render_data[field.name] = table[fieldGroup]?.[index];
+      });
+    });
+
     // merged render_data and table which we don't know how the data is structured
     var merged_data = Object.assign(render_data, table);
     var html = template(merged_data);
