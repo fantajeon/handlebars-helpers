@@ -6,3 +6,6 @@ install:
 
 build:
 	yarn build:dev
+
+run:
+	yarn start

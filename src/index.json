@@ -1,0 +1,47 @@
+{
+  "data": [{
+    "id": "concepts",
+    "label": "concepts",
+    "elements": [
+      {
+        "id": "dimension1", 
+        "label": "first dimension",
+        "type": "DIMENSION",
+        "options": {
+          "min": 1,
+          "max": 100,
+          "supportedTypes": ["DEFAULT"]
+        }
+      }
+    ]
+  }],
+  "style": [
+    {
+      "id": "template",
+      "label": "Template",
+      "elements": [
+        {
+          "id": "bodyTemplate",
+          "label": "Body Template",
+          "defaultValue": "<div id='container'>Handlebars <b>{{width}} x {{height}}</b></div>",
+          "type": "TEXTINPUT"
+        },
+        {
+          "id": "scriptTemplate",
+          "label": "Script Template",
+          "defaultValue": "Arial",
+          "type": "TEXTINPUT"
+        }
+      ]
+    }
+  ],
+  "interactions": [
+    {
+      "id": "interactionsConfigId",
+      "supportedActions": ["FILTER"]
+    }
+  ],
+  "features": {
+    "enableComparisonDateRange": false
+  }
+}
