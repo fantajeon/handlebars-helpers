@@ -63,8 +63,15 @@ module.exports = [{
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
+            presets: [ '@babel/preset-env', '@babel/preset-react' ]
+          },
+          plugins: [
+            '@babel/plugin-proposal-class-properties',
+            '@babel/plugin-proposal-object-rest-spread',
+            '@babel/plugin-transform-optional-chaining',
+            '@babel/plugin-proposal-nullish-coalescing-operator',
+            '@babel/plugin-proposal-private-methods'
+          ]
         }
       }
     ]

@@ -117,3 +117,13 @@ The `build` and `deploy` scripts can be found in the `./scripts/bin` directory.
 [write viz code]: https://developers.google.com/datastudio/visualization/write-viz
 [ds-component]: https://developers.google.com/datastudio/visualization/library-reference
 [caching]: https://developers.google.com/datastudio/visualization/caching
+
+
+
+
+# VERSION
+| Software | Version |
+|----------|---------|
+| yarn     | 1.22.22 |
+| node     | 22.12.0 |
+| npm      | 10.9.2  |

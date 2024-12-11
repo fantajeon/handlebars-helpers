@@ -183,7 +183,8 @@ const drawViz = (data) => {
     Object.keys(data.fields).forEach(fieldGroup => {
       var fields = data.fields[fieldGroup];
       fields.forEach((field, index) => {
-        render_data[field.name] = table[fieldGroup]?.[index];
+        //render_data[field.name] = table[fieldGroup]?.[index];
+        render_data[field.name] = (table[fieldGroup] && table[fieldGroup][index]) || undefined;
       });
     });
 
