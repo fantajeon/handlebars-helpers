@@ -8,8 +8,6 @@
   "privacyPolicyUrl": "https://github.com/fantajeon/lookerstudio-community-viz/",
   "termsOfServiceUrl": "https://github.com/fantajeon/lookerstudio-community-viz/",
   "packageUrl": "https://github.com/fantajeon/lookerstudio-community-viz/",
-  "license": "MIT",
-  "licenseUrl": "https://github.com/fantajeon/lookerstudio-community-viz/blob/main/LICENSE",
   "devMode": true,
   "components": [
     {
