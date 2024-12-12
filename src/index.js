@@ -18,7 +18,6 @@ import {
 Handlebars.registerHelper('jsonParse', function(context) {
   return JSON.parse(context);
 });
-
 // JsonTreeView를 동적 import로 변경
 const JsonTreeView = ({ data }) => {
   const [open, setOpen] = React.useState({});
@@ -28,6 +27,15 @@ const JsonTreeView = ({ data }) => {
   };
 
   const renderValue = (value, key) => {
+    if (value === null) {
+      return React.createElement(ListItem, { key: key },
+        React.createElement(ListItemText, {
+          primary: key.split('-').pop(),
+          secondary: "null"
+        })
+      );
+    }
+
     if (typeof value === 'object' && value !== null) {
       return React.createElement(ListItem, { key: key },
         React.createElement(IconButton, {

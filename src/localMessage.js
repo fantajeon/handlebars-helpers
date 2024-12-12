@@ -21,10 +21,7 @@ export const message = {
           "dimension1": [
               "Company", 
               "Google",
-              JSON.stringify({
-                "Age": "20",
-                "Gender": "Male"
-              })
+              JSON.stringify({"samples_per_second":null,"tokens_per_second":null,"exact_match":null,"f1":null,"rouge1":45.3237,"rouge2":23.1013,"rougeL":29.4723,"rougeLsum":42.9775,"gen_len":32660012,"gen_num":24576,"gen_tok_len":7124840})
           ]
       },
       {
