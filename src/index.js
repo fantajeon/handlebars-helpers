@@ -157,13 +157,13 @@ Handlebars.registerHelper('escapeHtml', function(text) {
 
 // write viz code here
 const drawViz = (data) => {
-  console.log(data);
+  //console.log(data);
 
   var body_template = data.style.bodyTemplate.value;
-  console.log(body_template);
+  //console.log(body_template);
 
   var script_template = data.style.scriptTemplate.value;
-  console.log(script_template);
+  //console.log(script_template);
 
   var tables = data.tables.DEFAULT;
   var template = Handlebars.compile(body_template);
@@ -197,7 +197,7 @@ const drawViz = (data) => {
     data_container.appendChild(card_container);
   }
 
-  console.log(data_container);
+  //console.log(data_container);
   vizframe.innerHTML = data_container.innerHTML;
 
   // run the script
