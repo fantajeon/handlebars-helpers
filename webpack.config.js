@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const {getBuildableComponents} = require('@google/dscc-scripts/build/viz/util');
 const TerserPlugin = require('terser-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const components = getBuildableComponents();
 const componentIndexToBuild = Number(process.env.WORKING_COMPONENT_INDEX) || 0;
@@ -24,6 +25,7 @@ const plugins = [
   new webpack.DefinePlugin({
     DSCC_IS_LOCAL: 'true',
   }),
+  new BundleAnalyzerPlugin(),
 ];
 
 let body = '<script src="main.js"></script>';
@@ -31,6 +33,7 @@ if (fs.existsSync(cssFilePath)) {
   body = body + '\n<link rel="stylesheet" href="index.css">';
   plugins.push(new CopyWebpackPlugin([{from: cssFilePath, to: '.'}]));
 }
+
 const iframeHTML = `
 <!doctype html>
 <html><body>
@@ -91,6 +94,7 @@ module.exports = [{
     extensions: ['.js', '.jsx']
   },
   optimization: {
+    minimize: true,
     minimizer: [
       new TerserPlugin({
         terserOptions: {

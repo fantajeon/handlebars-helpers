@@ -25,12 +25,6 @@
           "label": "Body Template",
           "defaultValue": "<div id='container'>Handlebars <b>{{width}} x {{height}}</b></div>",
           "type": "TEXTAREA"
-        },
-        {
-          "id": "scriptTemplate",
-          "label": "Script Template",
-          "defaultValue": "console.log('Hello, World!');",
-          "type": "TEXTAREA"
         }
       ]
     }

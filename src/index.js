@@ -207,11 +207,6 @@ const drawViz = (data) => {
 
   //console.log(data_container);
   vizframe.innerHTML = data_container.innerHTML;
-
-  // run the script
-  var script = document.createElement('script');
-  script.textContent = script_template;
-  vizframe.appendChild(script);
 };
 
 // renders locally
