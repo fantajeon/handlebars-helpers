@@ -3,23 +3,23 @@ const local = require('./localMessage.js');
 import Handlebars from "handlebars";
 import * as React from 'react';
 import Button from '@mui/material/Button';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import Paper from '@mui/material/Paper';
 import { createRoot } from 'react-dom/client';
 import { 
-  List, 
-  ListItem, 
-  ListItemText,
-  Collapse,
-  IconButton,
-  Typography,
-  Paper
-} from '@mui/material';
-import { ExpandMore, ExpandLess } from '@mui/icons-material';
+  ExpandMore, ExpandLess
+} from '@mui/icons-material';
 
 // add json parse to handlesbards as a helper
 Handlebars.registerHelper('jsonParse', function(context) {
   return JSON.parse(context);
 });
 
+// JsonTreeView를 동적 import로 변경
 const JsonTreeView = ({ data }) => {
   const [open, setOpen] = React.useState({});
 

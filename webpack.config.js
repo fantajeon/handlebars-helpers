@@ -3,6 +3,7 @@ const fs = require('fs');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const {getBuildableComponents} = require('@google/dscc-scripts/build/viz/util');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const components = getBuildableComponents();
 const componentIndexToBuild = Number(process.env.WORKING_COMPONENT_INDEX) || 0;
@@ -39,7 +40,7 @@ ${body}
 
 fs.writeFileSync(path.resolve(__dirname, 'dist', 'vizframe.html'), iframeHTML);
 module.exports = [{
-  mode: 'development',
+  mode: 'production',
   entry: jsFilePath,
   devServer: {
     static: {
@@ -63,20 +64,53 @@ module.exports = [{
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [ '@babel/preset-env', '@babel/preset-react' ]
-          },
-          plugins: [
-            '@babel/plugin-proposal-class-properties',
-            '@babel/plugin-proposal-object-rest-spread',
-            '@babel/plugin-transform-optional-chaining',
-            '@babel/plugin-proposal-nullish-coalescing-operator',
-            '@babel/plugin-proposal-private-methods'
-          ]
+            presets: [ '@babel/preset-env', '@babel/preset-react' ],
+            plugins: [
+              '@babel/plugin-proposal-class-properties',
+              '@babel/plugin-proposal-object-rest-spread',
+              '@babel/plugin-transform-optional-chaining',
+              '@babel/plugin-proposal-nullish-coalescing-operator',
+              '@babel/plugin-proposal-private-methods',
+              ["transform-imports", {
+                "@mui/material": {
+                  "transform": "@mui/material/${member}",
+                  "preventFullImport": true
+                },
+                "@mui/icons-material": {
+                  "transform": "@mui/icons-material/${member}",
+                  "preventFullImport": true
+                }
+              }]
+            ]
+          }
         }
       }
     ]
   },
   resolve: {
     extensions: ['.js', '.jsx']
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: true,
+          },
+        },
+      }),
+    ],
+    //splitChunks: {
+    //  chunks: 'all',
+    //  minSize: 20000,
+    //  maxSize: 244000,
+    //  cacheGroups: {
+    //    vendor: {
+    //      test: /[\\/]node_modules[\\/]/,
+    //      name: 'vendors',
+    //      chunks: 'all',
+    //    },
+    //  },
+    //},
   }
 }];
