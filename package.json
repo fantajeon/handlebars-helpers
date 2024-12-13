@@ -28,7 +28,7 @@
     "@babel/plugin-transform-optional-chaining": "^7.25.9",
     "@babel/preset-env": "^7.26.0",
     "@babel/preset-react": "^7.26.3",
-    "@google/dscc-gen": "^2.0.31",
+    "@google/dscc-gen": "file:.yalc/@google/dscc-gen",
     "@google/dscc-scripts": "file:.yalc/@google/dscc-scripts",
     "@google/dscc-validation": "file:.yalc/@google/dscc-validation",
     "@webpack-cli/serve": "^2.0.5",

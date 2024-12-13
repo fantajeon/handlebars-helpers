@@ -1045,10 +1045,8 @@
     typescript "^3.5.2"
     watch "^1.0.2"
 
-"@google/dscc-gen@^2.0.31":
-  version "2.0.31"
-  resolved "https://registry.npmjs.org/@google/dscc-gen/-/dscc-gen-2.0.31.tgz"
-  integrity sha512-/0Ce0RIs5cyjesm2S8xBBSgIJ5JKPUF81gxOkInlEtAk0jKWnhwgtY6shpiS3ERrk9G0Eyx/CQsRDYZQQ/uJxQ==
+"@google/dscc-gen@file:.yalc/@google/dscc-gen":
+  version "2.0.30"
   dependencies:
     "@google/clasp" "2.2.1"
     "@types/mz" "^0.0.32"

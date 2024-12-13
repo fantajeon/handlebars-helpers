@@ -170,9 +170,6 @@ const drawViz = (data) => {
   var body_template = data.style.bodyTemplate.value;
   //console.log(body_template);
 
-  var script_template = data.style.scriptTemplate.value;
-  //console.log(script_template);
-
   var tables = data.tables.DEFAULT;
   var template = Handlebars.compile(body_template);
   var vizframe = document.body;

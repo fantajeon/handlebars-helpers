@@ -7,13 +7,12 @@
       "replaced": "file:///Users/hjj/git/ds_custom_chart/community-viz/tooling/packages/dscc-scripts"
     },
     "@google/dscc-gen": {
-      "version": "2.0.30",
-      "signature": "b3a557a482803ef2fc3e37d3d07a86f3",
-      "file": true
+      "signature": "34e41ff201d887d1ec8eabadcd14fb06",
+      "file": true,
+      "replaced": "^2.0.31"
     },
     "@google/dscc-validation": {
-      "version": "1.0.4",
-      "signature": "80feb51415df1a00c9a951bd7e32b6c4",
+      "signature": "8eead69be4112e3f16018a3f558fdb57",
       "file": true
     }
   }
