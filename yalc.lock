@@ -12,11 +12,20 @@
       "replaced": "^2.0.31"
     },
     "@google/dscc-validation": {
-      "signature": "8eead69be4112e3f16018a3f558fdb57",
+      "signature": "80feb51415df1a00c9a951bd7e32b6c4",
       "file": true
     },
     "handlebars-helpers-browserify-example": {
       "signature": "e7e906b2be4196bd60a5e4be944511cf",
+      "file": true
+    },
+    "handlebars-helpers": {
+      "signature": "970abf2d3ac4c07250d02ee4701abdbd",
+      "file": true,
+      "replaced": "0.10.0"
+    },
+    "@fantajeon/handlebars-helpers": {
+      "signature": "5b539778adb2bb91c21c4e8b927bc5f7",
       "file": true
     }
   }

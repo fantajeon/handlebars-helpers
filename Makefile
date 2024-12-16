@@ -23,9 +23,11 @@ yalc:
 	cd tooling/packages/dscc-scripts && yalc publish
 	cd tooling/packages/dscc-validation && yalc publish
 	cd tooling/packages/dscc-gen && yalc publish
+	cd handlebars-helpers && yalc publish
 	yalc add @google/dscc-scripts
 	yalc add @google/dscc-validation
 	yalc add @google/dscc-gen
+	yalc add @fantajeon/handlebars-helpers
 
 install: check-versions yalc
 	yarn install

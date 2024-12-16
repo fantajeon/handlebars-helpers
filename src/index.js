@@ -14,7 +14,19 @@ import {
 } from '@mui/icons-material';
 const H = require("just-handlebars-helpers");
 H.registerHelpers(Handlebars);
-var helpers = require('@budibase/handlebars-helpers')({
+var helpers = require('@fantajeon/handlebars-helpers')([
+  'array',
+  'object',
+  'math',
+  'html',
+  'string',
+  'url',
+  'collection',
+  'date',
+  'function',
+  'logic',
+  'number',
+], {
   handlebars: Handlebars
 });
 

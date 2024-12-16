@@ -982,6 +982,22 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.4.0.tgz#5e13fac887f08c44f76b0ccaf3370eb00fec9bb6"
   integrity sha512-snKqtPW01tN0ui7yu9rGv69aJXr/a/Ywvl11sUjNtEcRc+ng/mQriFL0wLXMef74iHa/EkftbDzU9F8iFbH+zg==
 
+"@fantajeon/handlebars-helpers@file:.yalc/@fantajeon/handlebars-helpers":
+  version "0.14.0"
+  dependencies:
+    get-object "^0.2.0"
+    get-value "^3.0.1"
+    handlebars "^4.7.7"
+    has-value "^2.0.2"
+    html-tag "^2.0.0"
+    is-glob "^4.0.1"
+    kind-of "^6.0.3"
+    micromatch "^4.0.5"
+    relative "^3.0.2"
+    striptags "^3.1.1"
+    to-gfm-code-block "^0.1.1"
+    uuid "^9.0.1"
+
 "@google/clasp@2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@google/clasp/-/clasp-2.2.1.tgz#1b7841f75ff0eb169bd978964d963fa85af8bb87"

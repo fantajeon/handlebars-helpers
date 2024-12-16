@@ -49,6 +49,7 @@
     "@budibase/handlebars-helpers": "^0.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@fantajeon/handlebars-helpers": "file:.yalc/@fantajeon/handlebars-helpers",
     "@mui/icons-material": "^5.15.0",
     "@mui/material": "^5.15.0",
     "@types/react": "^18.2.55",
