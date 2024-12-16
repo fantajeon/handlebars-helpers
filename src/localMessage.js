@@ -60,11 +60,10 @@ export const message = {
   },
   style: {
     bodyTemplate: {
-      value: "TOP: {{topN}}<div id='container'>{{#each items}}<div>CardId: {{this.cardId}}</div>{{/each}}</div>",
+      value: "<div>TOP: {{topN}}</div><div id='container'>{{#each items}}<div>CardId: {{this.cardId}}</div>{{/each}}</div>",
     },
     cssTemplate: {
       value: `
-        body { font-family: Arial, sans-serif; }
         .MuiButton-root {
           border-radius: 20px;
           text-transform: none;

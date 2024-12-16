@@ -30,7 +30,13 @@ const plugins = [
     resourceRegExp: /^\.\/locale$/,
     contextRegExp: /moment$/
   }),
+  new webpack.IgnorePlugin({
+    resourceRegExp: /^(ansi-colors|log-utils|handlebars-helpers\/lib\/logging)$/
+  }),
   new webpack.ids.HashedModuleIdsPlugin(), // 안정적인 모듈 ID 생성
+  new webpack.ProvidePlugin({
+    process: 'process/browser'
+  }),
 ];
 
 let body = '<script src="main.js"></script>';
@@ -137,7 +143,17 @@ module.exports = [{
     mainFields: ['browser', 'module', 'main'],
     alias: {
       moment$: path.resolve(__dirname, 'node_modules/moment/dist/moment.js'),
-      'moment/min/moment-with-locales': path.resolve(__dirname, 'node_modules/moment/dist/moment.js')
+      'moment/min/moment-with-locales': path.resolve(__dirname, 'node_modules/moment/dist/moment.js'),
+      'ansi-colors': false,
+      'log-utils': false,
+      'handlebars-helpers/lib/logging': false
+    },
+    fallback: {
+      "fs": false,
+      "readline": false,
+      "querystring": require.resolve("querystring-es3"),
+      "path": require.resolve("path-browserify"),
+      "process": require.resolve("process/browser"),
     }
   },
 }];

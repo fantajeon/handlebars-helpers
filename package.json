@@ -1,4 +1,6 @@
 {
+  "name": "community-viz-handlebars",
+  "version": "0.1.1",
   "dsccViz": {
     "gcsDevBucket": "gs://lookerstudio-community-viz",
     "gcsProdBucket": "gs://lookerstudio-community-viz-prod",
@@ -37,12 +39,14 @@
     "core-js": "^3.39.0",
     "css-loader": "^6.8.1",
     "mini-css-extract-plugin": "^2.9.2",
+    "string-replace-loader": "^3.1.0",
     "webpack": "^5.0.0",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.0.0",
     "webpack-dev-server": "^5.1.0"
   },
   "dependencies": {
+    "@budibase/handlebars-helpers": "^0.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^5.15.0",
@@ -53,10 +57,15 @@
     "fsevents": "^2.3.3",
     "glob": "^10.3.10",
     "handlebars": "^4.7.8",
+    "highlight.js": "^11.11.0",
     "just-handlebars-helpers": "^1.0.19",
+    "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.46",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
     "prop-types": "^15.8.1",
+    "querystring-es3": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-moment": "^1.1.3",

@@ -14,6 +14,10 @@
     "@google/dscc-validation": {
       "signature": "8eead69be4112e3f16018a3f558fdb57",
       "file": true
+    },
+    "handlebars-helpers-browserify-example": {
+      "signature": "e7e906b2be4196bd60a5e4be944511cf",
+      "file": true
     }
   }
 }

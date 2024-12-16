@@ -18,9 +18,6 @@ check-versions:
 clean:
 	rm -rf node_modules
 	rm -rf build
-	rm -rf dist
-	rm -rf .yarn-cache
-	rm -rf yarn.lock
 
 yalc:
 	cd tooling/packages/dscc-scripts && yalc publish

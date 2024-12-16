@@ -1,5 +1,4 @@
 const dscc = require('@google/dscc');
-const local = require('./localMessage.js');
 import Handlebars from "handlebars";
 import * as React from 'react';
 import Button from '@mui/material/Button';
@@ -15,12 +14,15 @@ import {
 } from '@mui/icons-material';
 const H = require("just-handlebars-helpers");
 H.registerHelpers(Handlebars);
-
-
-// add json parse to handlesbards as a helper
-Handlebars.registerHelper('jsonParse', function(context) {
-  return JSON.parse(context);
+var helpers = require('@budibase/handlebars-helpers')({
+  handlebars: Handlebars
 });
+
+// production 모드에서는 webpack.config.js의 TerserPlugin이 
+// 사용되지 않는 코드를 자동으로 제거하므로 이 코드는 삭제됩니다.
+// 왜냐하면 DSCC_IS_LOCAL이 false일 때는 local 변수가 사용되지 않기 때문입니다.
+const local = require('./localMessage.js');
+
 // JsonTreeView를 동적 import로 변경
 const JsonTreeView = ({ data }) => {
   const [open, setOpen] = React.useState({});
