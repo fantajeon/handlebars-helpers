@@ -13,6 +13,9 @@ import { createRoot } from 'react-dom/client';
 import { 
   ExpandMore, ExpandLess
 } from '@mui/icons-material';
+const H = require("just-handlebars-helpers");
+H.registerHelpers(Handlebars);
+
 
 // add json parse to handlesbards as a helper
 Handlebars.registerHelper('jsonParse', function(context) {
@@ -177,30 +180,29 @@ const drawViz = (data) => {
 
   // for each table, render the template
   var data_container = document.createElement('div');
-  for (var i = 0; i < tables.length; i++) {
-    var table = tables[i];
-    var render_data = {
-      cardId: i,
+  // 모든 테이블 데이터를 하나의 배열로 변환
+  const allData = tables.map((table, i) => {
+    // 기본 데이터 객체 생성
+    const render_data = {
+      cardId: i
     };
 
-    // fields에서 정의된 필드 이름으로 데이터 매핑
-    // 모든 필드 그룹을 순회
+    // 필드 매핑
     Object.keys(data.fields).forEach(fieldGroup => {
-      var fields = data.fields[fieldGroup];
-      fields.forEach((field, index) => {
-        //render_data[field.name] = table[fieldGroup]?.[index];
+      data.fields[fieldGroup].forEach((field, index) => {
         render_data[field.name] = (table[fieldGroup] && table[fieldGroup][index]) || undefined;
       });
     });
 
-    // merged render_data and table which we don't know how the data is structured
-    var merged_data = Object.assign(render_data, table);
-    var html = template(merged_data);
-    // append the html to the vizframe
-    var card_container = document.createElement('div');
-    card_container.innerHTML = html;
-    data_container.appendChild(card_container);
-  }
+    // 테이블 데이터와 병합
+    return render_data;
+  });
+
+  console.log(allData);
+
+  // 전체 데이터를 템플릿에 전달하여 한번에 렌더링
+  const html = template({ items: allData });
+  data_container.innerHTML = html;
 
   //console.log(data_container);
   vizframe.innerHTML = data_container.innerHTML;

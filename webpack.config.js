@@ -26,6 +26,10 @@ const plugins = [
     DSCC_IS_LOCAL: 'true',
   }),
   new BundleAnalyzerPlugin(),
+  new webpack.IgnorePlugin({
+    resourceRegExp: /^\.\/locale$/,
+    contextRegExp: /moment$/
+  }),
 ];
 
 let body = '<script src="main.js"></script>';
@@ -42,8 +46,39 @@ ${body}
 `;
 
 fs.writeFileSync(path.resolve(__dirname, 'dist', 'vizframe.html'), iframeHTML);
+
+console.log(process.env.NODE_ENV);
+
+let config_mode;
+if (process.env.NODE_ENV === 'development') {
+  plugins.push(new webpack.HotModuleReplacementPlugin());
+  config_mode = {
+    mode: 'development',
+    devtool: 'source-map',
+    optimization: {
+      minimize: false,
+    }
+  };
+} else {
+  config_mode = {
+    mode: 'production',
+    optimization: {
+      minimize: true,
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            compress: {
+              drop_console: true,
+            },
+          },
+        }),
+      ],
+    }
+  }
+}
+
 module.exports = [{
-  mode: 'production',
+  ...config_mode,
   entry: jsFilePath,
   devServer: {
     static: {
@@ -91,30 +126,9 @@ module.exports = [{
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
+    alias: {
+      moment$: 'moment/moment.js'
+    }
   },
-  optimization: {
-    minimize: true,
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          compress: {
-            drop_console: true,
-          },
-        },
-      }),
-    ],
-    //splitChunks: {
-    //  chunks: 'all',
-    //  minSize: 20000,
-    //  maxSize: 244000,
-    //  cacheGroups: {
-    //    vendor: {
-    //      test: /[\\/]node_modules[\\/]/,
-    //      name: 'vendors',
-    //      chunks: 'all',
-    //    },
-    //  },
-    //},
-  }
 }];

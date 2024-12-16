@@ -36,5 +36,5 @@ Key features:
 | Software | Version |
 |----------|---------|
 | yarn     | 1.22.22 |
-| node     | 22.12.0 |
+| node     | 23.4.0 |
 | npm      | 10.9.2  |

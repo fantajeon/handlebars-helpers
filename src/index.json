@@ -23,7 +23,7 @@
         {
           "id": "bodyTemplate",
           "label": "Body Template",
-          "defaultValue": "<div id='container'>Handlebars <b>{{width}} x {{height}}</b></div>",
+          "defaultValue": "<div id='container'>{{#each items}}<div>{{this.dimension1}}</div>{{/each}}</div>",
           "type": "TEXTAREA"
         }
       ]
@@ -34,8 +34,5 @@
       "id": "interactionsConfigId",
       "supportedActions": ["FILTER"]
     }
-  ],
-  "features": {
-    "enableComparisonDateRange": true
-  }
+  ]
 }

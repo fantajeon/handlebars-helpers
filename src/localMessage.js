@@ -61,9 +61,6 @@ export const message = {
   style: {
     bodyTemplate: {
       value: "<div class='card'>{{dim2}} ({{dim1}}) {{JsonTree dim3}}</div>",
-    },
-    scriptTemplate: {
-      value: "console.log('Hello, World!');",
-    },
+    }
   },
 };
