@@ -1,10 +1,10 @@
 {
   "data": [{
     "id": "concepts",
-    "label": "concepts",
+    "label": "concepts", 
     "elements": [
       {
-        "id": "dimension1", 
+        "id": "dimension1",
         "label": "first dimension",
         "type": "DIMENSION",
         "options": {
@@ -23,15 +23,45 @@
         {
           "id": "bodyTemplate",
           "label": "Body Template",
-          "defaultValue": "<div id='container'>{{#each items}}<div>{{this.dimension1}}</div>{{/each}}</div>",
+          "defaultValue": "<div id='container'>{{#each items}}<div>CardId: {{this.cardId}}</div>{{/each}}</div>",
           "type": "TEXTAREA"
+        },
+        {
+          "id": "cssTemplate",
+          "label": "CSS Template",
+          "defaultValue": "body { font-family: Arial, sans-serif; }",
+          "type": "TEXTAREA"
+        },
+        {
+          "id": "topN",
+          "label": "Top N",
+          "type": "NUMBER",
+          "defaultValue": 10,
+          "options": {
+            "enabled": {
+              "type": "CHECKBOX",
+              "defaultValue": false
+            }
+          }
+        },
+        {
+          "id": "paged",
+          "label": "Page",
+          "type": "NUMBER",
+          "defaultValue": 10,
+          "options": {
+            "enabled": {
+              "type": "CHECKBOX", 
+              "defaultValue": false
+            }
+          }
         }
       ]
     }
   ],
   "interactions": [
     {
-      "id": "interactionsConfigId",
+      "id": "interactionsConfigId", 
       "supportedActions": ["FILTER"]
     }
   ]

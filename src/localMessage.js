@@ -60,7 +60,41 @@ export const message = {
   },
   style: {
     bodyTemplate: {
-      value: "<div class='card'>{{dim2}} ({{dim1}}) {{JsonTree dim3}}</div>",
+      value: "TOP: {{topN}}<div id='container'>{{#each items}}<div>CardId: {{this.cardId}}</div>{{/each}}</div>",
+    },
+    cssTemplate: {
+      value: `
+        body { font-family: Arial, sans-serif; }
+        .MuiButton-root {
+          border-radius: 20px;
+          text-transform: none;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+          transition: all 0.3s ease;
+        }
+        .MuiButton-root:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .MuiButton-contained {
+          background: linear-gradient(45deg, #2196F3 30%, #21CBF3 90%);
+        }
+      `,
+    },
+    topN: {
+      value: 10,
+      options: {
+        enabled: {
+          value: false
+        }
+      }
+    },
+    paged: {
+      value: 2,
+      options: {
+        enabled: {
+          value: true
+        }
+      }
     }
   },
 };

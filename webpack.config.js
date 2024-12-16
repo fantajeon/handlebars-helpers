@@ -30,12 +30,17 @@ const plugins = [
     resourceRegExp: /^\.\/locale$/,
     contextRegExp: /moment$/
   }),
+  new webpack.ids.HashedModuleIdsPlugin(), // 안정적인 모듈 ID 생성
 ];
 
 let body = '<script src="main.js"></script>';
 if (fs.existsSync(cssFilePath)) {
   body = body + '\n<link rel="stylesheet" href="index.css">';
-  plugins.push(new CopyWebpackPlugin([{from: cssFilePath, to: '.'}]));
+  plugins.push(new CopyWebpackPlugin({
+    patterns: [
+      { from: cssFilePath, to: '.' }
+    ]
+  }));
 }
 
 const iframeHTML = `
@@ -88,6 +93,7 @@ module.exports = [{
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
   plugins: plugins,
   module: {
@@ -97,18 +103,19 @@ module.exports = [{
         include: [
           path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'node_modules/@mui'),
-          path.resolve(__dirname, 'node_modules/@babel')
+          path.resolve(__dirname, 'node_modules/@babel'),
+          path.resolve(__dirname, 'node_modules/moment')
         ],
         use: {
           loader: 'babel-loader',
           options: {
             presets: [ '@babel/preset-env', '@babel/preset-react' ],
             plugins: [
-              '@babel/plugin-proposal-class-properties',
-              '@babel/plugin-proposal-object-rest-spread',
+              '@babel/plugin-transform-class-properties',
+              '@babel/plugin-transform-object-rest-spread',
               '@babel/plugin-transform-optional-chaining',
-              '@babel/plugin-proposal-nullish-coalescing-operator',
-              '@babel/plugin-proposal-private-methods',
+              '@babel/plugin-transform-nullish-coalescing-operator',
+              '@babel/plugin-transform-private-methods',
               ["transform-imports", {
                 "@mui/material": {
                   "transform": "@mui/material/${member}",
@@ -127,8 +134,10 @@ module.exports = [{
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    mainFields: ['browser', 'module', 'main'],
     alias: {
-      moment$: 'moment/moment.js'
+      moment$: path.resolve(__dirname, 'node_modules/moment/dist/moment.js'),
+      'moment/min/moment-with-locales': path.resolve(__dirname, 'node_modules/moment/dist/moment.js')
     }
   },
 }];

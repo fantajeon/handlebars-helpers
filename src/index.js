@@ -165,21 +165,37 @@ Handlebars.registerHelper('link', function(text, url) {
 Handlebars.registerHelper('escapeHtml', function(text) {
   return Handlebars.escapeExpression(text);
 });
-
 // write viz code here
 const drawViz = (data) => {
-  //console.log(data);
-
   var body_template = data.style.bodyTemplate.value;
-  //console.log(body_template);
+  console.log(body_template);
+
+  var css_template = data.style.cssTemplate.value;
+  console.log(css_template);
+  // 스타일 엘리먼트 생성
+  const styleElement = document.createElement('style');
+  // 스타일 엘리먼트에 CSS 내용 설정
+  styleElement.textContent = css_template;
+  // 스타일 엘리먼트에 id 부여 (중복 방지)
+  styleElement.id = 'dscc-custom-style';
+  // 기존 스타일이 있다면 제거
+  const existingStyle = document.getElementById('dscc-custom-style');
+  if (existingStyle) {
+    existingStyle.remove();
+  }
+  // 새로운 스타일 추가
+  document.head.appendChild(styleElement);
 
   var tables = data.tables.DEFAULT;
   var template = Handlebars.compile(body_template);
   var vizframe = document.body;
 
-
   // for each table, render the template
   var data_container = document.createElement('div');
+  var topNEnabled = data.style.topN.options.enabled.value || false;
+  var topN = topNEnabled ? data.style.topN.value : tables.length;
+  tables = tables.slice(0, topN);
+
   // 모든 테이블 데이터를 하나의 배열로 변환
   const allData = tables.map((table, i) => {
     // 기본 데이터 객체 생성
@@ -194,18 +210,111 @@ const drawViz = (data) => {
       });
     });
 
-    // 테이블 데이터와 병합
     return render_data;
   });
 
-  console.log(allData);
+  let processedData = allData;
+  let currentPage = 1; // 현재 페이지 상태 관리
 
-  // 전체 데이터를 템플릿에 전달하여 한번에 렌더링
-  const html = template({ items: allData });
-  data_container.innerHTML = html;
+  // 페이징 처리
+  const pageEnabled = data.style.paged.options.enabled.value || false;
+  const pageSize = pageEnabled ? data.style.paged.value : processedData.length;
+  const totalPages = Math.ceil(tables.length / pageSize);
 
-  //console.log(data_container);
-  vizframe.innerHTML = data_container.innerHTML;
+  // 페이지 이동 함수
+  const goToPage = (pageNum) => {
+    console.log("goToPage", pageNum);
+    currentPage = Math.min(Math.max(1, pageNum), totalPages); // 페이지 범위 확인
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    processedData = allData.slice(startIndex, endIndex);
+    renderPage();
+  };
+
+  // 페이지 렌더링 함수
+  const renderPage = () => {
+    const html = template({
+      items: processedData,
+      topN: topN,
+      pageSize: pageSize,
+      totalPages: totalPages,
+      pageEnabled: pageEnabled,
+      currentPage: currentPage
+    });
+    data_container.innerHTML = html;
+    // 페이지네이션 컨트롤 추가
+    if (pageEnabled && totalPages > 1) {
+      console.log("페이지 활성화 및 총 페이지가 1보다 큼");
+      const paginationContainer = document.createElement('div');
+      paginationContainer.className = 'pagination';
+      paginationContainer.style.cssText = `
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+      `;
+
+      const prevPlaceHolderHtml = document.createElement('div');
+      prevPlaceHolderHtml.id = "mui-button-left-button";
+
+      const pageInfoHtml = document.createElement('span');
+      pageInfoHtml.id = "mui-button-page-info";
+      pageInfoHtml.textContent = `${currentPage} / ${totalPages}`;
+      pageInfoHtml.style.margin = '0 10px';
+
+      const nextPlaceHolderHtml = document.createElement('div');
+      nextPlaceHolderHtml.id = "mui-button-right-button";
+
+      paginationContainer.appendChild(prevPlaceHolderHtml);
+      paginationContainer.appendChild(pageInfoHtml); 
+      paginationContainer.appendChild(nextPlaceHolderHtml);
+      data_container.appendChild(paginationContainer);
+
+      setTimeout(() => {
+        // 이전 페이지 버튼
+        const prevContainer = document.getElementById(`mui-button-left-button`);
+        const root = createRoot(prevContainer);
+        const prevButton = React.createElement(Button, {
+          variant: 'contained',
+          color: 'primary',
+          disabled: currentPage === 1,
+          onClick: () => goToPage(currentPage - 1),
+          style: {
+            minWidth: '40px',
+            padding: '6px 12px'
+          }
+        }, '<');
+
+        root.render(prevButton);
+
+        // 다음 페이지 버튼 
+        const nextContainer = document.getElementById(`mui-button-right-button`);
+        const nextRoot = createRoot(nextContainer);
+        const nextButton = React.createElement(Button, {
+          variant: 'contained',
+          color: 'primary',
+          disabled: currentPage === totalPages,
+          onClick: () => goToPage(currentPage + 1),
+          style: {
+            minWidth: '40px',
+            padding: '6px 12px'
+          }
+        }, '>');
+
+        nextRoot.render(nextButton);
+      }, 0);
+    }
+
+    vizframe.innerHTML = data_container.innerHTML;
+  };
+
+  // 초기 페이지 렌더링
+  if (pageEnabled) {
+    goToPage(1);
+  } else {
+    renderPage();
+  }
 };
 
 // renders locally
