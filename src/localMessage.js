@@ -60,7 +60,7 @@ export const message = {
   },
   style: {
     bodyTemplate: {
-      value: "<div>TOP: {{topN}}</div><div id='container'>{{#each items}}<div>CardId: {{this.cardId}}</div>{{/each}}</div>",
+      value: "<div>TOP: {{topN}}</div><div id='container'>{{#each items}}<div>CardId: {{this.cardId}} {{parseMarkdown \"*hello world*\"}}</div>{{/each}}</div>",
     },
     cssTemplate: {
       value: `

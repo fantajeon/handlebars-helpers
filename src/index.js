@@ -26,6 +26,7 @@ var helpers = require('@fantajeon/handlebars-helpers')([
   'function',
   'logic',
   'number',
+  'markdown',
 ], {
   handlebars: Handlebars
 });
