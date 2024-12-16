@@ -33,9 +33,25 @@
           "type": "TEXTAREA"
         },
         {
+          "id": "templateIteratorMode",
+          "label": "Template Iterator Mode",
+          "type": "SELECT_SINGLE", 
+          "defaultValue": "template",
+          "options": [
+            {
+              "label": "Template에서 반복문 처리",
+              "value": "template"
+            },
+            {
+              "label": "component에서 반복문 처리",
+              "value": "component"
+            }
+          ]
+        },
+        {
           "id": "topN",
           "label": "Top N",
-          "type": "NUMBER",
+          "type": "NUMBER", 
           "defaultValue": 10,
           "options": {
             "enabled": {
@@ -51,7 +67,7 @@
           "defaultValue": 10,
           "options": {
             "enabled": {
-              "type": "CHECKBOX", 
+              "type": "CHECKBOX",
               "defaultValue": false
             }
           }

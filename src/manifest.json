@@ -1,7 +1,7 @@
 {
-  "name": "Handlebars with JSON Handling",
+  "name": "Handlebars with helpers for front-end engineering",
   "organization": "HyeokjuneJeon",
-  "description": "A component that visualizes JSON data and executes Handlebars templates",
+  "description": "A component that visualizes JSON data and executes Handlebars templates with helpers for front-end engineering",
   "logoUrl": "https://raw.githubusercontent.com/fantajeon/lookerstudio-community-viz/main/icon.png",
   "organizationUrl": "https://www.linkedin.com/in/coworker-ai/",
   "supportUrl": "https://github.com/fantajeon/lookerstudio-community-viz/issues",
@@ -11,8 +11,8 @@
   "devMode": false,
   "components": [
     {
-      "name": "Handlebars with JSON Handling",
-      "id": "handlebars-with-json-handling",
+      "name": "Handlebars with helpers for front-end engineering",
+      "id": "handlebars-with-helpers",
       "description": "A dynamic component that visualizes data using Handlebars template syntax. Features various UI elements like tree viewers and buttons powered by Material-UI.",
       "iconUrl": "https://raw.githubusercontent.com/fantajeon/lookerstudio-community-viz/main/icon.png",
       "resource": {

@@ -60,7 +60,8 @@ export const message = {
   },
   style: {
     bodyTemplate: {
-      value: "<div>TOP: {{topN}}</div><div id='container'>{{#each items}}<div>CardId: {{this.cardId}} {{parseMarkdown \"*hello world*\"}}</div>{{/each}}</div>",
+      //value: "<div>TOP: {{topN}}</div><div id='container'>{{#each items}}<div>CardId: {{this.cardId}} {{parseMarkdown \"*hello world*\"}}</div>{{/each}}</div>",
+      value: "<div>TOP: {{topN}}</div><div id='container'><div>CardId: {{this.cardId}} {{parseMarkdown \"*hello world*\"}}</div></div>",
     },
     cssTemplate: {
       value: `
@@ -78,6 +79,9 @@ export const message = {
           background: linear-gradient(45deg, #2196F3 30%, #21CBF3 90%);
         }
       `,
+    },
+    templateIteratorMode: {
+      value: "component"
     },
     topN: {
       value: 10,
