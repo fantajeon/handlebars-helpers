@@ -81,6 +81,7 @@
     "html-tag": "^2.0.0",
     "is-glob": "^4.0.1",
     "kind-of": "^6.0.3",
+    "marked": "^15.0.4",
     "micromatch": "^4.0.5",
     "relative": "^3.0.2",
     "striptags": "^3.1.1",

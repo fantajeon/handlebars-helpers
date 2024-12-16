@@ -4927,6 +4927,11 @@ markdown-utils@^0.7.0, markdown-utils@^0.7.1, markdown-utils@^0.7.3:
     list-item "^1.1.1"
     to-gfm-code-block "^0.1.1"
 
+marked@^15.0.4:
+  version "15.0.4"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-15.0.4.tgz#864dbf50227b6507646c771c2ef5f0de2924833e"
+  integrity sha512-TCHvDqmb3ZJ4PWG7VEGVgtefA5/euFmsIhxtD0XsBxI39gUSKL81mIRFdt0AiNQozUahd4ke98ZdirExd/vSEw==
+
 match-file@^0.2.1:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/match-file/-/match-file-0.2.2.tgz#26e6bcf1b390a661f6126faf8ac501e33eccfae9"
