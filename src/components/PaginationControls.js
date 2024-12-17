@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { CustomButton } from './Button';
-import { scheduleNextRender } from '../utils/renderUtils';
+import { scheduleNextRenderPromise } from '../utils/renderUtils';
 
 export const createPaginationControls = (currentPage, totalPages, goToPage) => ({
   run: () => {
@@ -28,7 +28,7 @@ export const createPaginationControls = (currentPage, totalPages, goToPage) => (
 
     paginationContainer.append(prevPlaceHolderHtml, pageInfoHtml, nextPlaceHolderHtml);
 
-    const renderPaginationButtons = () => {
+    const renderPaginationButtons = (value) => {
       const paginationButtons = [
         {
           id: 'left-button',
@@ -62,11 +62,11 @@ export const createPaginationControls = (currentPage, totalPages, goToPage) => (
         }
       });
 
-      return { success: true };
+      return { success: true, value: { currentPage, totalPages } };
     };
 
-    // 모나드를 사용하여 렌더링 스케줄링
-    scheduleNextRender().bind(renderPaginationButtons);
+    scheduleNextRenderPromise()
+      .then(renderPaginationButtons);
 
     return { paginationContainer };
   }
