@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { CustomButton } from './Button';
+import { scheduleNextRender } from '../utils/renderUtils';
 
 export const createPaginationControls = (currentPage, totalPages, goToPage) => ({
   run: () => {
@@ -27,26 +28,45 @@ export const createPaginationControls = (currentPage, totalPages, goToPage) => (
 
     paginationContainer.append(prevPlaceHolderHtml, pageInfoHtml, nextPlaceHolderHtml);
 
-    setTimeout(() => {
-      [
-        {id: 'left-button', label: '<', disabled: currentPage === 1, onClick: () => goToPage(currentPage - 1)},
-        {id: 'right-button', label: '>', disabled: currentPage === totalPages, onClick: () => goToPage(currentPage + 1)}
-      ].forEach(({id, label, disabled, onClick}) => {
+    const renderPaginationButtons = () => {
+      const paginationButtons = [
+        {
+          id: 'left-button',
+          label: '<',
+          disabled: currentPage === 1,
+          onClick: () => goToPage(currentPage - 1)
+        },
+        {
+          id: 'right-button',
+          label: '>',
+          disabled: currentPage === totalPages,
+          onClick: () => goToPage(currentPage + 1)
+        }
+      ];
+
+      paginationButtons.forEach(({id, label, disabled, onClick}) => {
         const container = document.getElementById(`mui-button-${id}`);
-        const root = createRoot(container);
-        root.render(
-          CustomButton({
-            label,
-            disabled,
-            onClick,
-            style: {
-            minWidth: '40px',
-              padding: '6px 12px'
-            }
-          })
-        );
+        if (container) {
+          const root = createRoot(container);
+          root.render(
+            CustomButton({
+              label,
+              disabled,
+              onClick,
+              style: {
+                minWidth: '40px',
+                padding: '6px 12px'
+              }
+            })
+          );
+        }
       });
-    }, 0);
+
+      return { success: true };
+    };
+
+    // 모나드를 사용하여 렌더링 스케줄링
+    scheduleNextRender().bind(renderPaginationButtons);
 
     return { paginationContainer };
   }
