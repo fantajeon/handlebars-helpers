@@ -16,7 +16,6 @@ if (!component) {
   throw new Error('No component found at index ' + componentIndexToBuild);
 }
 
-
 const cssFilePath = path.resolve(__dirname, 'src', component.cssFile || '');
 const jsFilePath = path.resolve(__dirname, 'src', component.jsFile || '');
 
@@ -97,42 +96,18 @@ module.exports = [{
     },
   },
   output: {
-    filename: 'main.js',
+    filename: 'main.js', 
     path: path.resolve(__dirname, 'dist'),
-    clean: true,
   },
   plugins: plugins,
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        include: [
-          path.resolve(__dirname, 'src'),
-          path.resolve(__dirname, 'node_modules/@mui'),
-          path.resolve(__dirname, 'node_modules/@babel'),
-          path.resolve(__dirname, 'node_modules/moment')
-        ],
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [ '@babel/preset-env', '@babel/preset-react' ],
-            plugins: [
-              '@babel/plugin-transform-class-properties',
-              '@babel/plugin-transform-object-rest-spread',
-              '@babel/plugin-transform-optional-chaining',
-              '@babel/plugin-transform-nullish-coalescing-operator',
-              '@babel/plugin-transform-private-methods',
-              ["transform-imports", {
-                "@mui/material": {
-                  "transform": "@mui/material/${member}",
-                  "preventFullImport": true
-                },
-                "@mui/icons-material": {
-                  "transform": "@mui/icons-material/${member}",
-                  "preventFullImport": true
-                }
-              }]
-            ]
+            presets: ['@babel/preset-env']
           }
         }
       }
@@ -142,18 +117,14 @@ module.exports = [{
     extensions: ['.js', '.jsx'],
     mainFields: ['browser', 'module', 'main'],
     alias: {
-      moment$: path.resolve(__dirname, 'node_modules/moment/dist/moment.js'),
-      'moment/min/moment-with-locales': path.resolve(__dirname, 'node_modules/moment/dist/moment.js'),
       'ansi-colors': false,
-      'log-utils': false,
+      'log-utils': false, 
       'handlebars-helpers/lib/logging': false
     },
     fallback: {
-      "fs": false,
-      "readline": false,
-      "querystring": require.resolve("querystring-es3"),
+      "url": require.resolve("url/"),
       "path": require.resolve("path-browserify"),
-      "process": require.resolve("process/browser"),
+      "util": require.resolve("util/")
     }
-  },
+  }
 }];

@@ -1,20 +1,6 @@
 {
   "version": "v1",
   "packages": {
-    "@google/dscc-scripts": {
-      "signature": "c54c78bd400ed5aef2eae888b2466aa5",
-      "file": true,
-      "replaced": "file:///Users/hjj/git/ds_custom_chart/community-viz/tooling/packages/dscc-scripts"
-    },
-    "@google/dscc-gen": {
-      "signature": "34e41ff201d887d1ec8eabadcd14fb06",
-      "file": true,
-      "replaced": "^2.0.31"
-    },
-    "@google/dscc-validation": {
-      "signature": "80feb51415df1a00c9a951bd7e32b6c4",
-      "file": true
-    },
     "handlebars-helpers-browserify-example": {
       "signature": "e7e906b2be4196bd60a5e4be944511cf",
       "file": true
@@ -27,6 +13,21 @@
     "@fantajeon/handlebars-helpers": {
       "signature": "1c644ed0c5f0a998c3d5d45fd0d4f553",
       "file": true
+    },
+    "@google/dscc-scripts": {
+      "signature": "4b3c13dd83b478a0b870053876d3d1a2",
+      "file": true,
+      "replaced": "^1.0.17"
+    },
+    "@google/dscc-validation": {
+      "signature": "80feb51415df1a00c9a951bd7e32b6c4",
+      "file": true,
+      "replaced": "^1.0.4"
+    },
+    "@google/dscc-gen": {
+      "signature": "34e41ff201d887d1ec8eabadcd14fb06",
+      "file": true,
+      "replaced": "^2.0.31"
     }
   }
 }

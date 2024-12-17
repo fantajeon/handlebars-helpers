@@ -4,6 +4,6 @@
  * @returns {Promise} 렌더링 작업을 담은 PromiseMonad 인스턴스
  */
 export const scheduleNextRenderPromise = (value) => {
-  value = value ?? {};
+  value = value || {};
   return Promise.resolve(value);
 };

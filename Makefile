@@ -19,17 +19,24 @@ clean:
 	rm -rf node_modules
 	rm -rf build
 
-yalc:
+yalc-publish:
 	cd tooling/packages/dscc-scripts && yalc publish
 	cd tooling/packages/dscc-validation && yalc publish
 	cd tooling/packages/dscc-gen && yalc publish
 	cd handlebars-helpers && yalc publish
-	yalc add @google/dscc-scripts
-	yalc add @google/dscc-validation
-	yalc add @google/dscc-gen
-	yalc add @fantajeon/handlebars-helpers
+	yalc add @google/dscc-scripts \
+		@google/dscc-validation \
+		@google/dscc-gen \
+		@fantajeon/handlebars-helpers
 
-install: check-versions yalc
+yalc-update:
+	cd tooling/packages/dscc-scripts && yalc push
+	cd tooling/packages/dscc-validation && yalc push
+	cd tooling/packages/dscc-gen && yalc push
+	cd handlebars-helpers && yalc push
+	yalc update
+
+install: check-versions yalc-publish
 	yarn install
 
 build-post:

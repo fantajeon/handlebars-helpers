@@ -3,7 +3,7 @@ import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { JsonTreeView } from '../components/JsonTreeView';
 import { CustomButton } from '../components/Button';
-const H = require("just-handlebars-helpers");
+//const H = require("just-handlebars-helpers");
 var helpers = require('@fantajeon/handlebars-helpers')([
   'array',
   'object',
@@ -21,7 +21,7 @@ var helpers = require('@fantajeon/handlebars-helpers')([
   handlebars: Handlebars
 });
 
-H.registerHelpers(Handlebars);
+//H.registerHelpers(Handlebars);
 
 // JsonTree helper
 Handlebars.registerHelper('JsonTree', function(jsonData) {

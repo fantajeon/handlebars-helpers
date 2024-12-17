@@ -8,7 +8,7 @@
   "privacyPolicyUrl": "https://github.com/fantajeon/lookerstudio-community-viz/",
   "termsOfServiceUrl": "https://github.com/fantajeon/lookerstudio-community-viz/",
   "packageUrl": "https://github.com/fantajeon/lookerstudio-community-viz/",
-  "devMode": false,
+  "devMode": "DEVMODE_BOOL",
   "components": [
     {
       "name": "Handlebars with helpers for front-end engineering",
@@ -16,9 +16,9 @@
       "description": "A dynamic component that visualizes data using Handlebars template syntax. Features various UI elements like tree viewers and buttons powered by Material-UI.",
       "iconUrl": "https://raw.githubusercontent.com/fantajeon/lookerstudio-community-viz/main/icon.png",
       "resource": {
-        "js": "gs://lookerstudio-community-viz-prod/index.js",
-        "config": "gs://lookerstudio-community-viz-prod/index.json",
-        "css": "gs://lookerstudio-community-viz-prod/index.css"
+        "js": "YOUR_GCS_BUCKET/index.js",
+        "config": "YOUR_GCS_BUCKET/index.json",
+        "css": "YOUR_GCS_BUCKET/index.css"
       }
     }
   ]

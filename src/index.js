@@ -1,4 +1,5 @@
-const dscc = require('@google/dscc');
+import dscc from '@google/dscc';
+import local from './localMessage.js';
 import './helpers/handlebarsHelpers';
 import { RenderMonad } from './utils/RenderMonad';
 import { applyStyles } from './services/styleService';
@@ -7,7 +8,6 @@ import { preprocessData, initializeData, renderPage } from './services/dataServi
 // production 모드에서는 webpack.config.js의 TerserPlugin이 
 // 사용되지 않는 코드를 자동으로 제거하므로 이 코드는 삭제됩니다.
 // 왜냐하면 DSCC_IS_LOCAL이 false일 때는 local 변수가 사용되지 않기 때문입니다.
-const local = require('./localMessage.js');
 
 // write viz code here
 const drawViz = async (data) => {
