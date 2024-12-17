@@ -10,14 +10,14 @@ import { preprocessData, initializeData, renderPage } from './services/dataServi
 const local = require('./localMessage.js');
 
 // write viz code here
-const drawViz = (data) => {
+const drawViz = async (data) => {
   RenderMonad.of(data)
-    .chain(initData => initializeData(initData).run())
+    .chain(initData => initializeData(initData))
     .chain(state => {
-      applyStyles(state.css_template).run();
+      applyStyles(state.css_template);
       const topN = state.topNEnabled ? state.data.style.topN.value : state.tables.length;
       const slicedTables = state.tables.slice(0, topN);
-      const allData = preprocessData(slicedTables, state.data.fields).run().data;
+      const allData = preprocessData(slicedTables, state.data.fields).data;
       const pageSize = state.pageEnabled ? state.data.style.paged.value : allData.length;
       const totalPages = Math.ceil(slicedTables.length / pageSize);
 
@@ -25,13 +25,13 @@ const drawViz = (data) => {
         const currentPage = Math.min(Math.max(1, pageNum), totalPages);
         const startIndex = (currentPage - 1) * pageSize;
         const processedData = allData.slice(startIndex, startIndex + pageSize);
-        renderPage({...state, currentPage, processedData, pageSize, totalPages, goToPage}).run();
+        renderPage({...state, currentPage, processedData, pageSize, totalPages, goToPage});
       };
 
       if (state.pageEnabled) {
         goToPage(1);
       } else {
-        renderPage({...state, currentPage: 1, processedData: allData, pageSize: allData.length, totalPages: 1}).run();
+        renderPage({...state, currentPage: 1, processedData: allData, pageSize: allData.length, totalPages: 1});
       }
       return state;
     });
@@ -41,5 +41,7 @@ const drawViz = (data) => {
 if (DSCC_IS_LOCAL) {
   drawViz(local.message);
 } else {
-  dscc.subscribeToData(drawViz, {transform: dscc.objectTransform});
+  dscc.subscribeToData(async (data) => {
+    drawViz(data);
+  }, {transform: dscc.objectTransform});
 }

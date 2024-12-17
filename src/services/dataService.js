@@ -1,8 +1,8 @@
 import Handlebars from 'handlebars';
 import { createPaginationControls } from '../components/PaginationControls';
 
-export const preprocessData = (tables, fields) => ({
-  run: () => ({
+export const preprocessData = (tables, fields) => {
+  return {
     data: tables.map((table, i) => {
       const render_data = { cardId: i };
       Object.keys(fields).forEach(fieldGroup => {
@@ -12,25 +12,24 @@ export const preprocessData = (tables, fields) => ({
       });
       return render_data;
     })
-  })
-});
+  };
+};
 
-export const initializeData = (data) => ({
-  run: () => ({
-    body_template: data.style.bodyTemplate.value,
-    css_template: data.style.cssTemplate.value,
-    tables: data.tables.DEFAULT,
-    template: Handlebars.compile(data.style.bodyTemplate.value),
-    vizframe: document.body,
-    data_container: document.createElement('div'),
-    topNEnabled: data.style.topN.options.enabled.value || false,
-    pageEnabled: data.style.paged.options.enabled.value || false,
-    data
-  })
-});
+export const initializeData = (data) => {
+    return {
+        body_template: data.style.bodyTemplate.value,
+        css_template: data.style.cssTemplate.value,
+        tables: data.tables.DEFAULT,
+        template: Handlebars.compile(data.style.bodyTemplate.value),
+        vizframe: document.body,
+        data_container: document.createElement('div'),
+        topNEnabled: data.style.topN.options.enabled.value || false,
+        pageEnabled: data.style.paged.options.enabled.value || false,
+        data
+    };
+};
 
-export const renderPage = (state) => ({
-  run: () => {
+export const renderPage = (state) => {
     const { template, data_container, vizframe, processedData, pageEnabled, totalPages, currentPage, goToPage } = state;
     const iteratorMode = state.data.style.templateIteratorMode.value;
     const templateData = {
@@ -53,5 +52,4 @@ export const renderPage = (state) => ({
 
     vizframe.innerHTML = data_container.innerHTML;
     return state;
-  }
-}); 
+};
