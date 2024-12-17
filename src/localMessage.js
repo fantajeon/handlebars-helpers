@@ -61,7 +61,7 @@ export const message = {
   style: {
     bodyTemplate: {
       //value: "<div>TOP: {{topN}}</div><div id='container'>{{#each items}}<div>CardId: {{this.cardId}} {{parseMarkdown \"*hello world*\"}}</div>{{/each}}</div>",
-      value: "<div>TOP: {{topN}}</div><div id='container'><div>CardId: {{this.cardId}} {{parseMarkdown \"*hello world*\"}}</div></div>",
+      value: "<div>TOP: {{topN}}</div><div id='container'><div>CardId: {{this.cardId}} {{parseMarkdown \"*hello world*\"}} {{JsonTree item.dim3}} </div></div>",
     },
     cssTemplate: {
       value: `
