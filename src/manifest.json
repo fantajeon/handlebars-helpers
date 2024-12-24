@@ -8,7 +8,7 @@
   "privacyPolicyUrl": "https://github.com/fantajeon/lookerstudio-community-viz/",
   "termsOfServiceUrl": "https://github.com/fantajeon/lookerstudio-community-viz/",
   "packageUrl": "https://github.com/fantajeon/lookerstudio-community-viz/",
-  "devMode": true,
+  "devMode": "DEVMODE_BOOL",
   "components": [
     {
       "name": "Handlebars with helpers for front-end engineering",
