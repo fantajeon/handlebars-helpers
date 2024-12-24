@@ -2,6 +2,7 @@ import Handlebars from 'handlebars';
 import { createPaginationControls } from '../components/PaginationControls';
 
 export const preprocessData = (tables, fields) => {
+  console.log("preprocessData", tables, fields);
   return {
     data: tables.map((table, i) => {
       const render_data = { cardId: i };
@@ -16,6 +17,7 @@ export const preprocessData = (tables, fields) => {
 };
 
 export const initializeData = (data) => {
+    console.log("initializeData", data);
     return {
         body_template: data.style.bodyTemplate.value,
         css_template: data.style.cssTemplate.value,
@@ -23,13 +25,14 @@ export const initializeData = (data) => {
         template: Handlebars.compile(data.style.bodyTemplate.value),
         vizframe: document.body,
         data_container: document.createElement('div'),
-        topNEnabled: data.style.topN.options.enabled.value || false,
-        pageEnabled: data.style.paged.options.enabled.value || false,
+        topNEnabled: data.style.topNEnabled.value === "true" || false,
+        pageEnabled: data.style.pagedEnabled.value === "true" || false,
         data
     };
 };
 
 export const renderPage = (state) => {
+    console.log("renderPage", state);
     const { template, data_container, vizframe, processedData, pageEnabled, totalPages, currentPage, goToPage } = state;
     const iteratorMode = state.data.style.templateIteratorMode.value;
     const templateData = {
@@ -40,9 +43,10 @@ export const renderPage = (state) => {
       currentPage
     };
 
+    console.log("iteratorMode:", iteratorMode);
     const html = iteratorMode === 'template'
       ? template({...templateData, items: processedData})
-      : processedData.map(item => template({...templateData, item})).join('');
+      : processedData.map(item => template({...templateData, ...item})).join('');
 
     data_container.innerHTML = html;
 
@@ -50,6 +54,7 @@ export const renderPage = (state) => {
       data_container.appendChild(createPaginationControls(currentPage, totalPages, goToPage).run().paginationContainer);
     }
 
+    console.log("renderPage.innerHTML", data_container.innerHTML);
     vizframe.innerHTML = data_container.innerHTML;
     return state;
 };

@@ -24,6 +24,14 @@ The template allows you to:
 4. Test locally with sample data
 5. Deploy to Looker Studio Community Visualizations
 
+# Deploy
+Check `dscc.webpack.config.js` for webpack options in `dscc-scripts` builder.
+
+```bash
+yarn prod:build
+yarn push:prod
+```
+
 Key features:
 
 - Supports comparison date ranges

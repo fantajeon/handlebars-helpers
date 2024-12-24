@@ -13,8 +13,8 @@
     ]
   },
   "scripts": {
-    "build:dev": "DSCC_MODE=true dscc-scripts viz build -d dev",
-    "build:prod": "DSCC_MODE=true dscc-scripts viz build -d prod",
+    "build:dev": "dscc-scripts viz build -d dev",
+    "build:prod": "dscc-scripts viz build -d prod",
     "push:dev": "dscc-scripts viz push -d dev",
     "push:prod": "dscc-scripts viz push -d prod",
     "update_message": "dscc-scripts viz update_message -f object",

@@ -49,14 +49,26 @@
           ]
         },
         {
+          "id": "topNEnabled",
+          "label": "Top N Enabled",
+          "type": "CHECKBOX",
+          "defaultValue": "false"
+        },
+        {
           "id": "topN",
           "label": "Top N",
           "type": "TEXTINPUT",
           "defaultValue": "10"
         },
         {
-          "id": "paged",
-          "label": "Page",
+          "id": "pagedEnabled",
+          "label": "Page Enabled",
+          "type": "CHECKBOX",
+          "defaultValue": "false"
+        },
+        {
+          "id": "pageSize",
+          "label": "Page Size",
           "type": "TEXTINPUT",
           "defaultValue": "10"
         }

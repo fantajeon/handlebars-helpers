@@ -48,12 +48,7 @@ if (fs.existsSync(cssFilePath)) {
   }));
 }
 
-const iframeHTML = `
-<!doctype html>
-<html><body>
-${body}
-</body></html>
-`;
+const iframeHTML = `<!doctype html> <html><body> ${body} </body></html>`;
 
 fs.writeFileSync(path.resolve(__dirname, 'dist', 'vizframe.html'), iframeHTML);
 
@@ -93,26 +88,16 @@ module.exports = [{
   devServer: {
     static: {
       directory: path.join(__dirname, 'dist'),
+      publicPath: '/',
     },
+    hot: true,
+    open: true,
   },
   output: {
     filename: 'main.js', 
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: plugins,
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      }
-    ]
-  },
   resolve: {
     extensions: ['.js', '.jsx'],
     mainFields: ['browser', 'module', 'main'],
@@ -124,7 +109,8 @@ module.exports = [{
     fallback: {
       "url": require.resolve("url/"),
       "path": require.resolve("path-browserify"),
-      "util": require.resolve("util/")
+      "util": require.resolve("util/"),
+      "process": require.resolve('process/browser'),
     }
   }
 }];

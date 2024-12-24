@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * 렌더링 작업을 스케줄링하는 함수
  * @param {Object} value - 렌더링 작업에 필요한 값

@@ -1,3 +1,5 @@
+'use strict';
+
 export const RenderMonad = {
   of: (value) => 
     value === null || value === undefined 

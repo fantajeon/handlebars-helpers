@@ -83,21 +83,17 @@ export const message = {
     templateIteratorMode: {
       value: "component"
     },
-    topN: {
-      value: 10,
-      options: {
-        enabled: {
-          value: false
-        }
-      }
+    topNEnabled: {
+      value: "false"
     },
-    paged: {
-      value: 2,
-      options: {
-        enabled: {
-          value: true
-        }
-      }
+    topN: {
+      value: "10",
+    },
+    pagedEnabled: {
+      value: "false"
+    },
+    pageSize: {
+      value: "10"
     }
   },
 };

@@ -6,7 +6,7 @@ YARN_VERSION=1.22.22
 NPM_VERSION=10.9.2
 
 # 버킷 설정 
-DEV_BUCKET=gs://lookerstudio-community-viz-dev
+DEV_BUCKET=gs://lookerstudio-community-viz
 PROD_BUCKET=gs://lookerstudio-community-viz-prod
 
 check-versions:
@@ -41,6 +41,7 @@ install: check-versions yalc-publish
 
 build-post:
 	jq '.features = { "enableComparisonDateRange": false }' build/index.json > build/index.json.tmp && mv build/index.json.tmp build/index.json
+	jq '(.style[] | select(.elements[]? | select(.type == "CHECKBOX" and .defaultValue == "false")).elements[] | select(.type == "CHECKBOX" and .defaultValue == "false")).defaultValue = false' build/index.json > build/index.json.tmp && mv build/index.json.tmp build/index.json
 
 build-dev:
 	mkdir -p dist
